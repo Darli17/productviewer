@@ -77,7 +77,7 @@ if success then
             end
           })
         else
-
+			print("game is not babft")
         end
     end
 else
