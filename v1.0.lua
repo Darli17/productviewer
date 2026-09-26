@@ -62,6 +62,14 @@ if success then
             Height = 200,
         })
         local ProductID = ProductBox:AddLabel("Product ID: "..product.ProductId, false)
+		ProductBox:AddButton("Copy ProductID", function()
+			setclipboard(tostring(product.ProductId))
+			Library:Notify({
+    			Title = "Product Viewer",
+    			Description = "ProductID successfully copied to clipboard!",
+    			Time = 4,
+			})
+		end)
         local ProductIsForSale = ProductBox:AddLabel("Is Product For Sale: "..tostring(product.IsForSale), false)
         local ProductPrice = ProductBox:AddLabel("Product Price: "..tostring(product.PriceInRobux), false)
         if player then
