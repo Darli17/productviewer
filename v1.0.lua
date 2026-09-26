@@ -12,7 +12,7 @@ Library.ShowToggleFrameInKeybinds = true
 
 local Window = Library:CreateWindow({
 	Title = "",
-	Footer = "productviewer v1.0 [universal] [close on insert]",
+	Footer = "productviewer v1.1 [universal] [close on insert]",
 	Icon = 115273366480969,
   IconSize = UDim2.fromOffset(150, 61),
   Size = UDim2.fromOffset(1400, 700),
@@ -49,7 +49,6 @@ end)
 if success then
     for _, product in pairs(result:GetCurrentPage()) do
         local ProductBox = Tabs.Products:AddLeftGroupbox(product.Name, "boxes")
-        ProductBox:AddDivider("Divider")
         local ProductName = ProductBox:AddLabel("Product Name: "..product.Name, false)
         local ProductDesc = ProductBox:AddLabel("Product Desc: "..product.Description, false)
         local ProductImage = ProductBox:AddImage("ProductImage", {
@@ -72,6 +71,10 @@ if success then
 		  end)
       local ProductIsForSale = ProductBox:AddLabel("Is Product For Sale: "..tostring(product.IsForSale), false)
       local ProductPrice = ProductBox:AddLabel("Product Price: "..tostring(product.PriceInRobux), false)
+      ProductBox:AddDivider("Divider")
+      local ProductCreated = ProductBox:AddLabel("Product Created: "..tostring(product.Created), false)
+      local ProductUpdated = ProductBox:AddLabel("Product Last Update: "..tostring(product.Updated), false)
+      ProductBox:AddDivider("Divider")
 			  if game.PlaceId == 537413528 then
 	        	ProductBox:AddButton({
 	          	Text = "Fire Buy Prompt",
