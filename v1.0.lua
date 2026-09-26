@@ -12,7 +12,7 @@ Library.ShowToggleFrameInKeybinds = true
 
 local Window = Library:CreateWindow({
 	Title = "",
-	Footer = "productviewer v1.0 [universal]",
+	Footer = "productviewer v1.0 [universal] [close on insert]",
 	Icon = 115273366480969,
   IconSize = UDim2.fromOffset(150, 61),
   Size = UDim2.fromOffset(1400, 700),
@@ -61,33 +61,31 @@ if success then
             ScaleType = Enum.ScaleType.Fit,
             Height = 200,
         })
-        local ProductID = ProductBox:AddLabel("Product ID: "..product.ProductId, false)
-		ProductBox:AddButton("Copy ProductID", function()
-			setclipboard(tostring(product.ProductId))
-			Library:Notify({
-    			Title = "Product Viewer",
-    			Description = "ProductID successfully copied to clipboard!",
-    			Time = 4,
-			})
-		end)
-        local ProductIsForSale = ProductBox:AddLabel("Is Product For Sale: "..tostring(product.IsForSale), false)
-        local ProductPrice = ProductBox:AddLabel("Product Price: "..tostring(product.PriceInRobux), false)
-        if player then
-			if game.PlaceId == 537413528 or 1930665568 or 1930863474 or 1930866268 then
-	          	ProductBox:AddButton({
-	            	Text = "Fire Buy Prompt",
-	            	Func = function()
-	            	  local args = {
-	            	    product.ProductId,
-	            	    "Product"
-	            	  }
-	            	  workspace:WaitForChild("PromptRobuxEvent"):InvokeServer(unpack(args))
-					end
-	        	})
-			end
-        	else
-				print("game is not babft")
-		end
+      local ProductID = ProductBox:AddLabel("Product ID: "..product.ProductId, false)
+		  ProductBox:AddButton("Copy ProductID", function()
+          setclipboard(tostring(product.ProductId))
+          Library:Notify({
+              Title = "Product Viewer",
+              Description = "ProductID successfully copied to clipboard!",
+              Time = 4,
+          })
+		  end)
+      local ProductIsForSale = ProductBox:AddLabel("Is Product For Sale: "..tostring(product.IsForSale), false)
+      local ProductPrice = ProductBox:AddLabel("Product Price: "..tostring(product.PriceInRobux), false)
+			  if game.PlaceId == 537413528 then
+	        	ProductBox:AddButton({
+	          	Text = "Fire Buy Prompt",
+	          	Func = function()
+	          	  local args = {
+	          	    product.ProductId,
+	          	    "Product"
+	          	  }
+	          	  workspace:WaitForChild("PromptRobuxEvent"):InvokeServer(unpack(args))
+				      end
+	      	  })
+          else
+				    print("game is not babft")
+			  end
     end
 else
     ProductBox:AddDivider("Divider")
