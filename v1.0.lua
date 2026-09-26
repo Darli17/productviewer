@@ -65,7 +65,7 @@ if success then
         local ProductIsForSale = ProductBox:AddLabel("Is Product For Sale: "..tostring(product.IsForSale), false)
         local ProductPrice = ProductBox:AddLabel("Product Price: "..tostring(product.PriceInRobux), false)
         if player then
-			game.PlaceId == 537413528 or 1930665568 or 1930863474 or 1930866268 then
+			if game.PlaceId == 537413528 or 1930665568 or 1930863474 or 1930866268 then
 	          	ProductBox:AddButton({
 	            	Text = "Fire Buy Prompt",
 	            	Func = function()
@@ -79,7 +79,6 @@ if success then
 			end
         	else
 				print("game is not babft")
-       		end
 		end
     end
 else
